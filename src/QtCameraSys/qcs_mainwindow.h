@@ -25,7 +25,6 @@ private:
     QLabel *m_pMessageLabel;
 
     QWidget *m_pCameraDisplayWidget;
-    QWidget *m_pVideoPlayerWidget;
     QWidget *m_pAudioPlayerWidget;
 
 };

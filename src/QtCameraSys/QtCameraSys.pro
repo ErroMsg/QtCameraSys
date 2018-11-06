@@ -39,13 +39,11 @@ SOURCES += \
         main.cpp \
         qcs_mainwindow.cpp \
     cameradisplaywidget.cpp \
-    videoplayerwidget.cpp \
     audioplayerwidget.cpp
 
 HEADERS += \
         qcs_mainwindow.h \
     cameradisplaywidget.h \
-    videoplayerwidget.h \
     audioplayerwidget.h \
     opencvinclude.h
 

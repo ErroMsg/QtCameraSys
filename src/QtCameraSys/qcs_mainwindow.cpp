@@ -2,7 +2,6 @@
 #include "ui_qcs_mainwindow.h"
 #include "audioplayerwidget.h"
 #include "cameradisplaywidget.h"
-#include "videoplayerwidget.h"
 #include <QTabWidget>
 #include <QLabel>
 
@@ -12,7 +11,6 @@ QCS_MainWindow::QCS_MainWindow(QWidget *parent) :
     ui(new Ui::QCS_MainWindow),
     m_pMessageLabel(nullptr),
     m_pCameraDisplayWidget(nullptr),
-    m_pVideoPlayerWidget(nullptr),
     m_pAudioPlayerWidget(nullptr)
 {
     initUI();
@@ -56,10 +54,11 @@ QCS_MainWindow::~QCS_MainWindow()
 
 void QCS_MainWindow::initUI()
 {
+
     ui->setupUi(this);
     ui->mainToolBar->hide();
     ui->menuBar->hide();
-
+    setWindowTitle("QtCameraSystem");
 }
 
 void QCS_MainWindow::initStatusBar()
@@ -73,11 +72,9 @@ void QCS_MainWindow::initCenterWidget()
     QTabWidget *tw = new QTabWidget(this);
 
     m_pCameraDisplayWidget = new CameraDisplayWidget();
-    m_pVideoPlayerWidget = new VideoPlayerWidget();
     m_pAudioPlayerWidget = new AudioPlayerWidget();
 
-    tw->addTab(m_pCameraDisplayWidget,"CameraDisplay");
-    tw->addTab(m_pVideoPlayerWidget,"VideoPlayer");
+    tw->addTab(m_pCameraDisplayWidget,"Camera/VideoPlayer");
     tw->addTab(m_pAudioPlayerWidget,"AudioPlayer");
     this->setCentralWidget(tw);
 }
