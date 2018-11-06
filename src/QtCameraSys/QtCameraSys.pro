@@ -37,10 +37,16 @@ LIBS += /usr/local/lib/libopencv_highgui.so \
 
 SOURCES += \
         main.cpp \
-        qcs_mainwindow.cpp
+        qcs_mainwindow.cpp \
+    cameradisplaywidget.cpp \
+    videoplayerwidget.cpp \
+    audioplayerwidget.cpp
 
 HEADERS += \
-        qcs_mainwindow.h
+        qcs_mainwindow.h \
+    cameradisplaywidget.h \
+    videoplayerwidget.h \
+    audioplayerwidget.h
 
 FORMS += \
         qcs_mainwindow.ui

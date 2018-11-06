@@ -17,6 +17,11 @@ public:
 
 private:
     Ui::QCS_MainWindow *ui;
+
+    QWidget *m_pCameraDisplayWidget;
+    QWidget *m_pVideoPlayerWidget;
+    QWidget *m_pAudioPlayerWidget;
+
 };
 
 #endif // QCS_MAINWINDOW_H
