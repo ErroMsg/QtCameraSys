@@ -2,6 +2,7 @@
 #define CAMERADISPLAYWIDGET_H
 
 #include <QWidget>
+#include "opencvinclude.h"
 
 class CameraDisplayWidget : public QWidget
 {

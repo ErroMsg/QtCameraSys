@@ -46,7 +46,8 @@ HEADERS += \
         qcs_mainwindow.h \
     cameradisplaywidget.h \
     videoplayerwidget.h \
-    audioplayerwidget.h
+    audioplayerwidget.h \
+    opencvinclude.h
 
 FORMS += \
         qcs_mainwindow.ui

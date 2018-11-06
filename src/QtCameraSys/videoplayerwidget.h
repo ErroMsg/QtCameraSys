@@ -2,6 +2,7 @@
 #define VIDEOPLAYERWIDGET_H
 
 #include <QWidget>
+#include "opencvinclude.h"
 
 class VideoPlayerWidget : public QWidget
 {
