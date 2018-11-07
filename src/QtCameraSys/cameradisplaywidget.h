@@ -41,6 +41,7 @@ private:
     void saveFile(QString savefilePath);
     void playFile(QString filePath);
     void updatePlayStatus(PlayStatus status,PlayType type);
+
 private:
     QLabel *m_pDisplayLabel;
     Mat m_frame;

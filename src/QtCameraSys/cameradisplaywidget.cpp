@@ -21,10 +21,46 @@ CameraDisplayWidget::CameraDisplayWidget(QWidget *parent) : QWidget(parent)
     initUI();
 }
 
+
 CameraDisplayWidget::~CameraDisplayWidget()
 {
     closeCamera();
 }
+
+void CameraDisplayWidget::initUI()
+{
+    QPushButton *pOpenBt = new QPushButton("Open Camera");
+    QPushButton *pCloseBt = new QPushButton("Close Camera");
+    QPushButton *pSaveBt = new QPushButton("Begin/Stop Save");
+    QPushButton *pReplayBt = new QPushButton("Replay Video");
+
+    QHBoxLayout *hlyt = new QHBoxLayout;
+    hlyt->addWidget(pOpenBt);
+    hlyt->addWidget(pCloseBt);
+    hlyt->addWidget(pSaveBt);
+    hlyt->addWidget(pReplayBt);
+
+    m_pDisplayLabel = new QLabel();
+    QVBoxLayout *pvlt = new QVBoxLayout();
+    pvlt->addWidget(m_pDisplayLabel);
+    pvlt->addLayout(hlyt);
+    setLayout(pvlt);
+
+    //label fill with black color
+    QPalette palette;
+    palette.setColor(QPalette::Background, QColor(0, 0, 0));
+    m_pDisplayLabel->setAutoFillBackground(true);
+    m_pDisplayLabel->setPalette(palette);
+
+    //this can be replaced with QThread, better?
+    m_timer = new QTimer(this);
+    connect(pOpenBt,SIGNAL(clicked(bool)),this,SLOT(openCamera()));
+    connect(pSaveBt,SIGNAL(clicked(bool)),this,SLOT(beginOrStopSave()));
+    connect(pCloseBt,SIGNAL(clicked(bool)),this,SLOT(closeCamera()));
+    connect(pReplayBt,SIGNAL(clicked(bool)),this,SLOT(replayFile()));
+    connect(m_timer,SIGNAL(timeout()),this,SLOT(displayFrame()));
+}
+
 
 void CameraDisplayWidget::playFile(QString filePath)
 {
@@ -151,39 +187,4 @@ void CameraDisplayWidget::updatePlayStatus(PlayStatus status, PlayType type)
     m_type = type;
 }
 
-void CameraDisplayWidget::initUI()
-{
-    QPushButton *pOpenBt = new QPushButton("Open Camera");
-    QPushButton *pCloseBt = new QPushButton("Close Camera");
-    QPushButton *pSaveBt = new QPushButton("Begin/Stop Save");
-    QPushButton *pReplayBt = new QPushButton("Replay Video");
-
-    QHBoxLayout *hlyt = new QHBoxLayout;
-    hlyt->addWidget(pOpenBt);
-    hlyt->addWidget(pCloseBt);
-    hlyt->addWidget(pSaveBt);
-    hlyt->addWidget(pReplayBt);
-
-    m_pDisplayLabel = new QLabel();
-    //m_pDisplayLabel->setMinimumSize(800,600);
-
-    QVBoxLayout *pvlt = new QVBoxLayout();
-    pvlt->addWidget(m_pDisplayLabel);
-    pvlt->addLayout(hlyt);
-
-    this->setLayout(pvlt);
-
-    //label fill black
-    QPalette palette;
-    palette.setColor(QPalette::Background, QColor(0, 0, 0));
-    m_pDisplayLabel->setAutoFillBackground(true);
-    m_pDisplayLabel->setPalette(palette);
-
-    m_timer = new QTimer(this);
-    connect(pOpenBt,SIGNAL(clicked(bool)),this,SLOT(openCamera()));
-    connect(pSaveBt,SIGNAL(clicked(bool)),this,SLOT(beginOrStopSave()));
-    connect(pCloseBt,SIGNAL(clicked(bool)),this,SLOT(closeCamera()));
-    connect(pReplayBt,SIGNAL(clicked(bool)),this,SLOT(replayFile()));
-    connect(m_timer,SIGNAL(timeout()),this,SLOT(displayFrame()));
-}
 

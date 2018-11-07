@@ -24,8 +24,8 @@ private:
     void initCenterWidget();
 private:
     Ui::QCS_MainWindow *ui;
-    QLabel *m_pMessageLabel;
 
+    QLabel *m_pMessageLabel;
     CameraDisplayWidget *m_pCameraDisplayWidget;
     AudioPlayerWidget *m_pAudioPlayerWidget;
 
