@@ -81,7 +81,7 @@ void CameraDisplayWidget::saveFile(QString savefilePath)
 {
     if(m_writer.open(savefilePath.toStdString(),VideoWriter::fourcc('M', 'J', 'P', 'G'), 30.0, Size(640, 480), true))
     {
-        qDebug()<<"m_writer.open";
+        qDebug()<<"m_writer.open:" << savefilePath;
         m_bsavefile = true;
     }
     else
