@@ -8,6 +8,7 @@ class QCS_MainWindow;
 }
 class QLabel;
 class CameraDisplayWidget;
+class AudioPlayerWidget;
 class QCS_MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -26,7 +27,7 @@ private:
     QLabel *m_pMessageLabel;
 
     CameraDisplayWidget *m_pCameraDisplayWidget;
-    QWidget *m_pAudioPlayerWidget;
+    AudioPlayerWidget *m_pAudioPlayerWidget;
 
 };
 

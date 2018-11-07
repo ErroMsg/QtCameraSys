@@ -34,7 +34,7 @@ void QCS_MainWindow::initUI()
 
 void QCS_MainWindow::initStatusBar()
 {
-    m_pMessageLabel = new QLabel("msg:cc");
+    m_pMessageLabel = new QLabel(this);
     ui->statusBar->addPermanentWidget(m_pMessageLabel);
 }
 
@@ -50,6 +50,7 @@ void QCS_MainWindow::initCenterWidget()
     this->setCentralWidget(tw);
 
     connect(m_pCameraDisplayWidget,SIGNAL(postMessage(QString)),this,SLOT(updateMessage(QString)));
+    connect(m_pAudioPlayerWidget,SIGNAL(postMessage(QString)),this,SLOT(updateMessage(QString)));
 }
 
 void QCS_MainWindow::updateMessage(QString str)
