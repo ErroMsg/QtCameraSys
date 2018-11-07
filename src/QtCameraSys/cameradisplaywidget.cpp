@@ -9,7 +9,7 @@
 #include <QFileDialog>
 #include <QDebug>
 #include <QTime>
-
+#include <QDir>
 
 CameraDisplayWidget::CameraDisplayWidget(QWidget *parent) : QWidget(parent)
   ,m_pDisplayLabel(nullptr),
@@ -90,12 +90,13 @@ void CameraDisplayWidget::beginOrStopSave()
     {
         if(!m_bsavefile)
         {
-            //save path can be config by .ini file or setup window.
-            QString filename = "./VideoData" + QTime::currentTime().toString() + ".avi";
+            //save path can be config by .ini file or setup window!!
+            QString curPath = QDir::currentPath();
+            QString filename = curPath + "/VideoData" + QTime::currentTime().toString() + ".avi";
             if(!filename.isEmpty())
             {
                 saveFile(filename);
-                emit postMessage("Saving file...");
+                emit postMessage(QString("Saving file...(file path is: %1)").arg(filename));
             }
         }
         else
