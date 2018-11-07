@@ -7,6 +7,7 @@ namespace Ui {
 class QCS_MainWindow;
 }
 class QLabel;
+class CameraDisplayWidget;
 class QCS_MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -24,7 +25,7 @@ private:
     Ui::QCS_MainWindow *ui;
     QLabel *m_pMessageLabel;
 
-    QWidget *m_pCameraDisplayWidget;
+    CameraDisplayWidget *m_pCameraDisplayWidget;
     QWidget *m_pAudioPlayerWidget;
 
 };
